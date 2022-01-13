@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -27,7 +27,7 @@ class Tree
 			return pLeft == pRight;
 		}
 		friend class Tree;
-	}*Root;	//Êîðåíü äåðåâà
+	}*Root;	//ÐšÐ¾Ñ€ÐµÐ½ÑŒ Ð´ÐµÑ€ÐµÐ²Ð°
 public:
 	Element* getRoot()const
 	{
@@ -91,17 +91,17 @@ public:
 private:
 	void insert(int Data, Element* Root)
 	{
-		//Root - êîðåíü ïîääåðåâà
-		//this->Root - êîðåíü âñåãî äåðåâà
+		//Root - ÐºÐ¾Ñ€ÐµÐ½ÑŒ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð°
+		//this->Root - ÐºÐ¾Ñ€ÐµÐ½ÑŒ Ð²ÑÐµÐ³Ð¾ Ð´ÐµÑ€ÐµÐ²Ð°
 		if (this->Root == nullptr)this->Root = new Element(Data);
 		if (Root == nullptr)return;
 		if (Data < Root->Data)
 		{
-			if (Root->pLeft == nullptr)//Åñëè åñòü ìåñòî äëÿ äîáàâëåíèÿ ýëåìåíòà,
-				Root->pLeft = new Element(Data);//Äîáàâëÿåì ýëåìåíò ïðÿìî ñþäà.
-			else//Â ïðîòèâíîì ñëó÷àå
-				insert(Data, Root->pLeft);	//èäåì íàëåâî, è èùèì ìåñòî, 
-											//êóäà äîáàâèòü ýëåìåíò.
+			if (Root->pLeft == nullptr)//Ð•ÑÐ»Ð¸ ÐµÑÑ‚ÑŒ Ð¼ÐµÑÑ‚Ð¾ Ð´Ð»Ñ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ñ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð°,
+				Root->pLeft = new Element(Data);//Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ Ð¿Ñ€ÑÐ¼Ð¾ ÑÑŽÐ´Ð°.
+			else//Ð’ Ð¿Ñ€Ð¾Ñ‚Ð¸Ð²Ð½Ð¾Ð¼ ÑÐ»ÑƒÑ‡Ð°Ðµ
+				insert(Data, Root->pLeft);	//Ð¸Ð´ÐµÐ¼ Ð½Ð°Ð»ÐµÐ²Ð¾, Ð¸ Ð¸Ñ‰Ð¸Ð¼ Ð¼ÐµÑÑ‚Ð¾, 
+											//ÐºÑƒÐ´Ð° Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚.
 		}
 		else if (Data > Root->Data)
 		{
@@ -117,21 +117,21 @@ private:
 		Erase(Data, Root->pRight);
 		if (Data == Root->Data)
 		{
-			if (Root->is_leaf()) //åñëè ýëåìåíò ÿâëÿåòñÿ ëèñòêîì, òî åãî ìîæíî óäàëèòü
+			if (Root->is_leaf()) //ÐµÑÐ»Ð¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð»Ð¸ÑÑ‚ÐºÐ¾Ð¼, Ñ‚Ð¾ ÐµÐ³Ð¾ Ð¼Ð¾Ð¶Ð½Ð¾ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ
 			{
 				delete Root;
 				Root = nullptr;
 			}
 			else
 			{
-				if (Count(Root->pLeft) > Count(Root->pRight)) //Åñëè â ëåâîé âåòêå áîëüøå ýëåìåíòîâ, ÷åì â ïðàâîé
+				if (Count(Root->pLeft) > Count(Root->pRight)) //Ð•ÑÐ»Ð¸ Ð² Ð»ÐµÐ²Ð¾Ð¹ Ð²ÐµÑ‚ÐºÐµ Ð±Ð¾Ð»ÑŒÑˆÐµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð², Ñ‡ÐµÐ¼ Ð² Ð¿Ñ€Ð°Ð²Ð¾Ð¹
 				{
-					Root->Data = maxValue(Root->pLeft); //òî çàìåíÿåì çíà÷åíèå óäàëÿåìîãî ýëåìåíòà ìàêñèìàëüíûì çíà÷åíèåì ëåâîé âåòêè
+					Root->Data = maxValue(Root->pLeft); //Ñ‚Ð¾ Ð·Ð°Ð¼ÐµÐ½ÑÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑƒÐ´Ð°Ð»ÑÐµÐ¼Ð¾Ð³Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸ÐµÐ¼ Ð»ÐµÐ²Ð¾Ð¹ Ð²ÐµÑ‚ÐºÐ¸
 					Erase(maxValue(Root->pLeft), Root->pLeft);
 				}
-				else //â ïðîòèâíîì ñëó÷àå
+				else //Ð² Ð¿Ñ€Ð¾Ñ‚Ð¸Ð²Ð½Ð¾Ð¼ ÑÐ»ÑƒÑ‡Ð°Ðµ
 				{
-					Root->Data = minValue(Root->pRight); // çàìåíÿåì çíà÷åíèå óäàëÿåìîãî ýëåìåíòà ìèíèìàëüíûì çíà÷åíèåì ïðàâîé âåòêè
+					Root->Data = minValue(Root->pRight); // Ð·Ð°Ð¼ÐµÐ½ÑÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑƒÐ´Ð°Ð»ÑÐµÐ¼Ð¾Ð³Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ð¼Ð¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸ÐµÐ¼ Ð¿Ñ€Ð°Ð²Ð¾Ð¹ Ð²ÐµÑ‚ÐºÐ¸
 					Erase(minValue(Root->pRight), Root->pRight);
 				}
 			}
@@ -187,7 +187,7 @@ void main()
 	setlocale(LC_ALL, "");
 #ifdef BASE_CHECK
 	int n;
-	cout << "Ââåäèòå êîëè÷åñòâî ýëåìåíòîâ: "; cin >> n;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð²: "; cin >> n;
 	Tree tree;
 	for (int i = 0; i < n; i++)
 	{
@@ -195,17 +195,17 @@ void main()
 	}
 	tree.print();
 	cout << endl;
-	cout << "Ìèíèìàëüíîå çíà÷åíèå â äåðåâå: " << tree.minValue() << endl;
-	cout << "Ìàêñèìàëüíîå çíà÷åíèå â äåðåâå: " << tree.maxValue() << endl;
-	cout << "Êîëè÷åñòâî ýëåìåíòîâ â äåðåâå: " << tree.Count() << endl;
-	cout << "Ñóììà ýëåìåíòîâ äåðåâà: " << tree.Sum() << endl;
-	cout << "Ñðåäíåå àðèôìåòè÷åñêîå ýëåìåíòîâ äåðåâà: " << tree.Avg() << endl;
+	cout << "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð² Ð´ÐµÑ€ÐµÐ²Ðµ: " << tree.minValue() << endl;
+	cout << "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð² Ð´ÐµÑ€ÐµÐ²Ðµ: " << tree.maxValue() << endl;
+	cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð² Ð´ÐµÑ€ÐµÐ²Ðµ: " << tree.Count() << endl;
+	cout << "Ð¡ÑƒÐ¼Ð¼Ð° ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð´ÐµÑ€ÐµÐ²Ð°: " << tree.Sum() << endl;
+	cout << "Ð¡Ñ€ÐµÐ´Ð½ÐµÐµ Ð°Ñ€Ð¸Ñ„Ð¼ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð´ÐµÑ€ÐµÐ²Ð°: " << tree.Avg() << endl;
 #endif // BASE_CHECK
 
 	Tree tree = { 50,25,72,16,32,64,80,8,11,48,77,85 };
 	tree.print();
 	int value;
-	cout << "Ââåäèòå óäàëÿåìîå çíà÷åíèå: "; cin >> value;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»ÑÐµÐ¼Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ: "; cin >> value;
 	tree.Erase(value);
 	tree.print();
 }
